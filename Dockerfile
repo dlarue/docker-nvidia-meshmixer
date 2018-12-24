@@ -38,8 +38,10 @@ RUN export uid=1000 gid=1000 && \
 COPY entrypoint.sh /
 RUN mkdir /opt && \
     chmod +x /meshmixer-install.sh && \
-    chmod +x /entrypoint.sh
-RUN /meshmixer-install.sh
+    chmod +x /entrypoint.sh && \
+    apt-get update && \
+    apt-get install -y libboost-dev libsuperlu4 libcgal-dev libminizip-dev dh-autoreconf && \
+    /meshmixer-install.sh
 
 
 USER developer
