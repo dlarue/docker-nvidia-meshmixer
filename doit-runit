@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build -t ubuntu16_04:meshmixer .
+docker run -ti -e DISPLAY=unix:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v ~/.Xauthority:/home/developer/.Xauthority -v $(pwd)/shared_directory:/home/developer/shared_directory --device /dev/dri --net=host --runtime=nvidia --privileged ubuntu16_04:meshmixer
